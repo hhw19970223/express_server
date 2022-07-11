@@ -1,0 +1,134 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+let app = require('../hhw/app');
+let debug = require('debug')('server:server');
+let http = require('http');
+var crypto = require("crypto"); //加密库
+
+
+/**
+ * Get port from environment and store in Express.
+ */
+let port = normalizePort(process.env.PORT || '8009');
+app.set('port', port);
+
+/**
+ * Create HTTP server.
+ */
+
+let server = http.createServer(app);
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+server.listen(port, () => {
+    console.log("端口" + port + "启动成功")
+});
+server.on('error', onError);
+server.on('listening', onListening);
+require("../hhw/module/index");
+require("../hhw/work/index");
+require("../hhw/cron/index");
+let HWebSocket = require("../hhw/base/socket/HWebSocket");
+
+server.on('upgrade', function (req, socket, upgradeHead) { //握手
+    // console.log("连接上了");
+    let key = req.headers['sec-websocket-key'];
+    key = crypto.createHash("sha1").update(key + "258EAFA5-E914-47DA-95CA-C5AB0DC85B11").digest("base64");
+    let headers = [
+        'HTTP/1.1 101 Switching Protocols',
+        'Upgrade: websocket',
+        'Connection: Upgrade',
+        'Sec-WebSocket-Accept: ' + key
+    ];
+    socket.setNoDelay(true); //启用nagle算法
+    socket.write(headers.join("\r\n") + "\r\n\r\n", 'ascii');
+
+    let hWs = new HWebSocket(socket);
+    // hWs.interval = setInterval(() => {//启动定时器同步客户端时间
+    //   hWs.send(JSON.stringify({ "serverTime": new Date().getTime() }));
+    // }, 1000);
+    // wsCollector.wsCollectList.push(hWs);
+
+    // let msg = JSON.stringify({ "onlineNum": hWs.getCollectlength() })
+    // hWs.brocast(msg);
+
+    hWs.on('close', (reason) => {
+        console.log("socket closed:" + reason);
+    });
+
+    hWs.on('message', (data) => {
+        // hWs.brocast(data);
+        hWs.send(data);
+    });
+
+    hWs.req = req;
+    if (req.connection && req.connection.remoteAddress) { //如果存在ip 
+        hWs.ip = req.connection.remoteAddress;
+    }
+
+});
+
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+    var port = parseInt(val, 10);
+
+    if (isNaN(port)) {
+        // named pipe
+        return val;
+    }
+
+    if (port >= 0) {
+        // port number
+        return port;
+    }
+
+    return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+    if (error.syscall !== 'listen') {
+        throw error;
+    }
+
+    var bind = typeof port === 'string' ?
+        'Pipe ' + port :
+        'Port ' + port;
+
+    // handle specific listen errors with friendly messages
+    switch (error.code) {
+        case 'EACCES':
+            console.error(bind + ' requires elevated privileges');
+            process.exit(1);
+            break;
+        case 'EADDRINUSE':
+            console.error(bind + ' is already in use');
+            process.exit(1);
+            break;
+        default:
+            throw error;
+    }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+    var addr = server.address();
+    var bind = typeof addr === 'string' ?
+        'pipe ' + addr :
+        'port ' + addr.port;
+    debug('Listening on ' + bind);
+}

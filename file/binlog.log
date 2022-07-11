@@ -1,0 +1,181 @@
+/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=1*/;
+/*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;
+DELIMITER /*!*/;
+# at 4
+#211014 14:43:08 server id 1  end_log_pos 123 CRC32 0xa6cde0df 	Start: binlog v 4, server v 5.7.25-log created 211014 14:43:08 at startup
+# Warning: this binlog is either in use or was not closed properly.
+ROLLBACK/*!*/;
+# at 123
+#211014 14:43:08 server id 1  end_log_pos 154 CRC32 0xd4ac0a39 	Previous-GTIDs
+# [empty]
+# at 154
+#211014 14:45:22 server id 1  end_log_pos 219 CRC32 0x92566d57 	Anonymous_GTID	last_committed=0	sequence_number=1	rbr_only=yes
+/*!50718 SET TRANSACTION ISOLATION LEVEL READ COMMITTED*//*!*/;
+SET @@SESSION.GTID_NEXT= 'ANONYMOUS'/*!*/;
+# at 219
+#211014 14:45:22 server id 1  end_log_pos 311 CRC32 0xb68b469c 	Query	thread_id=2	exec_time=0	error_code=0
+SET TIMESTAMP=1634193922/*!*/;
+SET @@session.pseudo_thread_id=2/*!*/;
+SET @@session.foreign_key_checks=1, @@session.sql_auto_is_null=0, @@session.unique_checks=1, @@session.autocommit=1/*!*/;
+SET @@session.sql_mode=1344274432/*!*/;
+SET @@session.auto_increment_increment=1, @@session.auto_increment_offset=1/*!*/;
+/*!\C utf8mb4 *//*!*/;
+SET @@session.character_set_client=45,@@session.collation_connection=45,@@session.collation_server=8/*!*/;
+SET @@session.lc_time_names=0/*!*/;
+SET @@session.collation_database=DEFAULT/*!*/;
+BEGIN
+/*!*/;
+# at 311
+#211014 14:45:22 server id 1  end_log_pos 396 CRC32 0xb930cb94 	Table_map: `000备份线上表数据`.`c_area_rank` mapped to number 108
+# at 396
+#211014 14:45:22 server id 1  end_log_pos 874 CRC32 0xb3233900 	Update_rows: table id 108 flags: STMT_END_F
+### UPDATE `000备份线上表数据`.`c_area_rank`
+### WHERE
+###   @1=164
+###   @2=4
+###   @3=105
+###   @4=1
+###   @5=5
+###   @6=286497029
+###   @7='2020-12-12 22:15:06'
+###   @8='2020-12-12 22:15:06'
+###   @9=1
+### SET
+###   @1=164
+###   @2=4
+###   @3=9999
+###   @4=1
+###   @5=5
+###   @6=286497029
+###   @7='2020-12-12 22:15:06'
+###   @8='2020-12-12 22:15:06'
+###   @9=1
+### UPDATE `000备份线上表数据`.`c_area_rank`
+### WHERE
+###   @1=164
+###   @2=4
+###   @3=105
+###   @4=2
+###   @5=5
+###   @6=405090
+###   @7='2020-12-17 22:15:05'
+###   @8='2020-12-17 22:15:05'
+###   @9=1
+### SET
+###   @1=164
+###   @2=4
+###   @3=9999
+###   @4=2
+###   @5=5
+###   @6=405090
+###   @7='2020-12-17 22:15:05'
+###   @8='2020-12-17 22:15:05'
+###   @9=1
+### UPDATE `000备份线上表数据`.`c_area_rank`
+### WHERE
+###   @1=164
+###   @2=4
+###   @3=105
+###   @4=3
+###   @5=5
+###   @6=2723
+###   @7='2020-12-16 22:15:05'
+###   @8='2020-12-16 22:15:05'
+###   @9=1
+### SET
+###   @1=164
+###   @2=4
+###   @3=9999
+###   @4=3
+###   @5=5
+###   @6=2723
+###   @7='2020-12-16 22:15:05'
+###   @8='2020-12-16 22:15:05'
+###   @9=1
+### UPDATE `000备份线上表数据`.`c_area_rank`
+### WHERE
+###   @1=164
+###   @2=4
+###   @3=105
+###   @4=4
+###   @5=5
+###   @6=11129
+###   @7='2020-12-17 22:15:08'
+###   @8='2020-12-17 22:15:08'
+###   @9=1
+### SET
+###   @1=164
+###   @2=4
+###   @3=9999
+###   @4=4
+###   @5=5
+###   @6=11129
+###   @7='2020-12-17 22:15:08'
+###   @8='2020-12-17 22:15:08'
+###   @9=1
+### UPDATE `000备份线上表数据`.`c_area_rank`
+### WHERE
+###   @1=168
+###   @2=4
+###   @3=105
+###   @4=1
+###   @5=3
+###   @6=583262106
+###   @7='2021-01-15 22:15:05'
+###   @8='2021-01-15 22:15:05'
+###   @9=1
+### SET
+###   @1=168
+###   @2=4
+###   @3=9999
+###   @4=1
+###   @5=3
+###   @6=583262106
+###   @7='2021-01-15 22:15:05'
+###   @8='2021-01-15 22:15:05'
+###   @9=1
+# at 874
+#211014 14:45:22 server id 1  end_log_pos 905 CRC32 0x5b899042 	Xid = 35
+COMMIT/*!*/;
+# at 905
+#211015 17:23:52 server id 1  end_log_pos 970 CRC32 0xf77dfb32 	Anonymous_GTID	last_committed=1	sequence_number=2	rbr_only=yes
+/*!50718 SET TRANSACTION ISOLATION LEVEL READ COMMITTED*//*!*/;
+SET @@SESSION.GTID_NEXT= 'ANONYMOUS'/*!*/;
+# at 970
+#211015 17:23:52 server id 1  end_log_pos 1062 CRC32 0xde52e8e1 	Query	thread_id=3	exec_time=0	error_code=0
+SET TIMESTAMP=1634289832/*!*/;
+BEGIN
+/*!*/;
+# at 1062
+#211015 17:23:52 server id 1  end_log_pos 1147 CRC32 0x718714df 	Table_map: `000备份线上表数据`.`c_area_rank` mapped to number 108
+# at 1147
+#211015 17:23:52 server id 1  end_log_pos 1273 CRC32 0x4f085661 	Update_rows: table id 108 flags: STMT_END_F
+### UPDATE `000备份线上表数据`.`c_area_rank`
+### WHERE
+###   @1=164
+###   @2=4
+###   @3=94
+###   @4=13
+###   @5=2
+###   @6=18283
+###   @7='2020-12-17 22:15:08'
+###   @8='2020-12-17 22:15:08'
+###   @9=1
+### SET
+###   @1=164
+###   @2=4
+###   @3=95
+###   @4=13
+###   @5=2
+###   @6=18283
+###   @7='2020-12-17 22:15:08'
+###   @8='2020-12-17 22:15:08'
+###   @9=1
+# at 1273
+#211015 17:23:52 server id 1  end_log_pos 1304 CRC32 0xe458b294 	Xid = 60
+COMMIT/*!*/;
+SET @@SESSION.GTID_NEXT= 'AUTOMATIC' /* added by mysqlbinlog */ /*!*/;
+DELIMITER ;
+# End of log file
+/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;
+/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;

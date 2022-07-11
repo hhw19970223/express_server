@@ -1,0 +1,30 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "cookie-parser": "~1.4.4",
+    "cron": "^2.0.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.17.2",
+    "http-errors": "~1.6.3",
+    "lodash": "^4.17.21",
+    "md5": "^2.3.0",
+    "morgan": "~1.9.1",
+    "multiparty": "^4.2.2",
+    "mysql": "^2.18.1",
+    "node": "^15.14.0",
+    "node-xlsx": "^0.16.1",
+    "pug": "2.0.0-beta11",
+    "serve-favicon": "^2.5.0",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/node": "^16.6.2"
+  }
+}
