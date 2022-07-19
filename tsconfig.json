@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "./hhw/",
+        "noEmit": true,
+        // "module": "system",
+        // "outFile": "./hhw/min.js",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "types": ["node"],
+        "declarationDir": "./types",
+        "sourceMap": true,
+        "baseUrl": "./", // types文件夹的相对路径
+        "paths": {
+            "*": ["types/*"]
+        },
+        "declaration": true
+    },
+    "include": [
+        "./server",
+    ]
+}
