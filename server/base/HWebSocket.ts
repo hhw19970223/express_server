@@ -24,11 +24,11 @@ module H.Ws {
 
     /** 创建WebSocket类并继承事件类 */
     export class HWebSocket extends EventEmitter {
-        private client: any;
+        private _client: any;
         constructor(client: any) {
             super();
             let self = this;
-            self.client = client;
+            self._client = client;
             wsCollectList.push(self);
 
             client.on('message', function (msg: string) {
@@ -54,7 +54,7 @@ module H.Ws {
             if (message && typeof message == 'object') {
                 message = JSON.stringify(message);
             }
-            this.client.emit("message", message);
+            this._client.emit("message", message);
         }
 
         /** 删除断开连接 */
